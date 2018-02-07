@@ -11,10 +11,13 @@ int main()
   data.print();
   data.populate();
 
-  cout<< "The First line of  X is:"<< endl;
-  for (size_t i = 0; i < data.nb_features; i++) {
-    cout<< data.X[1][i] << "\t";
-  }
-  cout<< endl;
+//   cout<< endl;
+//   for (size_t j = 0; j < data.nb_examples; j++) {
+//     cout<< data.y[j]<<"\t";
+//   for (size_t i = 0; i < data.nb_features; i++) {
+//     cout<< data.X[j][i] << "\t";
+//   }
+//   cout<< endl;
+// }
   return 0;
 }

@@ -3,6 +3,7 @@
 #include <fstream>
 #include <algorithm>
 #include <sstream>
+#include <assert.h>
 
 using namespace std;
 
@@ -47,6 +48,8 @@ void Data::openFile(){
 }
 
 void Data::populate(){
+  assert(nb_examples > 0 and nb_features > 0);
+
   //Allocation of memory
   X = new double* [nb_examples];
   for (size_t i = 0; i < nb_examples; i++) {
@@ -77,9 +80,7 @@ void Data::populate(){
 }
 
 void Data::printX(){
-  if( (nb_examples == -1) or (nb_features == -1)){
-    throw string("Number of examples or number of features not initialized");
-  }
+  assert(nb_examples > 0 and nb_features > 0);
   for (size_t i = 0; i < nb_examples; i++) {
     for (size_t j = 0; j < nb_features; j++) {
           cout<< "X["<<i<<"]["<<j<<"]: "<<X[i][j] << "\t";
@@ -89,9 +90,7 @@ void Data::printX(){
 }
 
 void Data::printY(){
-  if( (nb_examples == -1) or (nb_features == -1)){
-    throw string("Number of examples or number of features not initialized");
-  }
+  assert(nb_examples > 0 and nb_features > 0);
   for (size_t i = 0; i < nb_examples; i++) {
     cout<< "Y["<<i<<"]: "<<y[i] << "\t";
   }

@@ -9,6 +9,7 @@ int main()
   Data data("../Test.txt");
   // data.print();
 
+  // data.printX();
 
   data.openFile();
   data.print();

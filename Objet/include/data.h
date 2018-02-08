@@ -11,12 +11,14 @@ public:
   string filename;
   double **X; //Training set
   double *y;
-  int nb_examples; //number of examples
-  int nb_features; //number of features
+  int nb_examples = -1; //number of examples
+  int nb_features = -1; //number of features
 
   Data(const string& file);
   Data(const Data& data);
   void print();
+  void printX();
+  void printY();
   void openFile();
   void populate();
 };

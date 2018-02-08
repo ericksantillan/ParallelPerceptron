@@ -40,8 +40,8 @@ void Data::openFile(){
     }
     i++;
   }
-  cout << "There is "<< k << "times in the line"<< endl;
-  cout << i;
+  // cout << "There is "<< k << "times in the line"<< endl;
+  // cout << i;
   nb_examples = i;
   nb_features = k;
 }
@@ -66,12 +66,34 @@ void Data::populate(){
     getline(st, label, ' ');
     y[i] = stof(label);
     j=0;
-    cout<<"Filling line"<<endl<<endl;
+    // cout<<"Filling line"<<endl<<endl;
     while(getline(st, feature, ' ')){
       X[i][j] = stof(feature);
-      cout<< "X["<< i <<"]["<<j<<"]: "<< X[i][j]<<endl;
+      // cout<< "X["<< i <<"]["<<j<<"]: "<< X[i][j]<<endl;
       j++;
     }
     i++;
   }
+}
+
+void Data::printX(){
+  if( (nb_examples == -1) or (nb_features == -1)){
+    throw string("Number of examples or number of features not initialized");
+  }
+  for (size_t i = 0; i < nb_examples; i++) {
+    for (size_t j = 0; j < nb_features; j++) {
+          cout<< "X["<<i<<"]["<<j<<"]: "<<X[i][j] << "\t";
+    }
+    cout<<endl;
+  }
+}
+
+void Data::printY(){
+  if( (nb_examples == -1) or (nb_features == -1)){
+    throw string("Number of examples or number of features not initialized");
+  }
+  for (size_t i = 0; i < nb_examples; i++) {
+    cout<< "Y["<<i<<"]: "<<y[i] << "\t";
+  }
+  cout<<endl;
 }

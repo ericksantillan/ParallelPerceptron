@@ -8,12 +8,19 @@ int main()
   // Data data("../../Erick/Magic/Magic-Train1");
   Data data("../Test.txt");
   // data.print();
+
+
   data.openFile();
   data.print();
   data.populate();
 
   Perceptron perceptron(data);
 
+  cout<<endl<<endl;
+  perceptron.training.print();
+
+  perceptron.training.printX();
+  perceptron.training.printY();
 //   cout<< endl;
 //   for (size_t j = 0; j < data.nb_examples; j++) {
 //     cout<< data.y[j]<<"\t";

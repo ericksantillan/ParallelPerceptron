@@ -26,9 +26,13 @@ def generate_example(model):
     return ex
 
 def print_array(array):
+    k=0
     for i in array:
-        print(str(i), end=' ')
-    print()
+        if k == nb_features:
+            print(str(i))
+        else:
+            print(str(i), end=' ')
+        k +=1
 
 good_model,bad_model = create_model(nb_features)
 

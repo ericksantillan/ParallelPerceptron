@@ -13,8 +13,8 @@ public:
   double *y;
   int nb_examples = -1; //number of examples
   int nb_features = -1; //number of features
-
-  Data(const string& file);
+  bool intercept;
+  Data(const string& file, bool inter = true);
   Data(const Data& data);
   void print();
   void printX();

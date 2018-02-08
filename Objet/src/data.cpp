@@ -7,12 +7,13 @@
 
 using namespace std;
 
-Data::Data(const string& file):filename(file){
+Data::Data(const string& file, bool inter):filename(file),intercept(inter){
   // filename = file;
 }
 
 Data::Data(const Data& data){
   filename = data.filename;
+  intercept = data.intercept;
   openFile();
   populate();
 }
@@ -43,10 +44,22 @@ void Data::openFile(){
   }
   // cout << "There is "<< k << "times in the line"<< endl;
   // cout << i;
+
+  if (intercept) {
+    k++;
+  }
+
   nb_examples = i;
+
   nb_features = k;
 }
 
+/**
+  * This function read the data from the file in filename
+  * The data should be formatted as follows: First the label in float (-1.0 or 1.0)
+  * Then the features separeted by ONE space
+  * The intercept will be added as the last feature if needed
+  */
 void Data::populate(){
   assert(nb_examples > 0 and nb_features > 0);
 
@@ -74,6 +87,9 @@ void Data::populate(){
       X[i][j] = stof(feature);
       // cout<< "X["<< i <<"]["<<j<<"]: "<< X[i][j]<<endl;
       j++;
+    }
+    if (intercept) {
+      X[i][j] = 1.0;
     }
     i++;
   }

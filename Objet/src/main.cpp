@@ -6,29 +6,32 @@ using namespace std;
 int main()
 {
   // Data data("../../Erick/Magic/Magic-Train1");
-  Data data("../Test.txt");
-  // data.print();
+  // Data test_set("../../Erick/Magic/Magic-Train2");
+  Data data("../../Data/tmp.txt");
+  Data test_set("../../Data/tmp.txt");
 
-  // data.printX();
-
-  data.openFile();
-  data.print();
-  data.populate();
+  test_set.openFile();
+  test_set.populate();
 
   Perceptron perceptron(data);
 
-  cout<<endl<<endl;
+  // cout<<endl<<endl;
   perceptron.training.print();
-
   perceptron.training.printX();
-  perceptron.training.printY();
-//   cout<< endl;
-//   for (size_t j = 0; j < data.nb_examples; j++) {
-//     cout<< data.y[j]<<"\t";
-//   for (size_t i = 0; i < data.nb_features; i++) {
-//     cout<< data.X[j][i] << "\t";
-//   }
-//   cout<< endl;
-// }
+
+  //Training
+  perceptron.train();
+
+
+
+  //Evaluation
+  double accu = perceptron.test_accuracy(test_set);
+  cout << "Accuracy :" << accu<< endl;
+
+  cout<< "Statistics" << endl;
+
+  perceptron.testing(test_set);
+
   return 0;
+
 }

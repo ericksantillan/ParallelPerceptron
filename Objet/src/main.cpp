@@ -1,5 +1,6 @@
 #include <iostream>
 #include "data.h"
+#include "perceptron.h"
 using namespace std;
 
 int main()
@@ -10,6 +11,8 @@ int main()
   data.openFile();
   data.print();
   data.populate();
+
+  Perceptron perceptron(data);
 
 //   cout<< endl;
 //   for (size_t j = 0; j < data.nb_examples; j++) {

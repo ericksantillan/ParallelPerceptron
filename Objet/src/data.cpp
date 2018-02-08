@@ -10,6 +10,12 @@ Data::Data(const string& file):filename(file){
   // filename = file;
 }
 
+Data::Data(const Data& data){
+  filename = data.filename;
+  openFile();
+  populate();
+}
+
 void Data::print(){
   cout << "The file name is: " << filename << "\n";
   cout << "The number of examples is: " << nb_examples << "\n";

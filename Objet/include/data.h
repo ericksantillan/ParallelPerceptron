@@ -1,3 +1,7 @@
+#ifndef DATA_H
+#define DATA_H
+
+
 #include <string>
 #include <iostream>
 using namespace std;
@@ -11,7 +15,10 @@ public:
   int nb_features; //number of features
 
   Data(const string& file);
+  Data(const Data& data);
   void print();
   void openFile();
   void populate();
 };
+
+#endif

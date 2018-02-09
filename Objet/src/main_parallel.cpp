@@ -11,6 +11,8 @@ int main()
   Data data("../../Data/Magic-Train1");
   Data test_set("../../Data/Magic-Train2");
 
+  Data op[5];
+  op=data.split(5);
   data.openFile();
   data.populate();
   test_set.openFile();

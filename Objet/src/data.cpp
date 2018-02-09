@@ -112,3 +112,9 @@ void Data::printY(){
   }
   cout<<endl;
 }
+
+Data* Data::split(int nb_partitions){
+  Data partitions[nb_partitions](filename);
+
+  return partitions;
+}

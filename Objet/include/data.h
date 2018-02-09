@@ -21,6 +21,7 @@ public:
   void printY();
   void openFile();
   void populate();
+  Data* split(int nb_partitions);
 };
 
 #endif

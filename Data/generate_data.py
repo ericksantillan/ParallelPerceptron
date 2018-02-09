@@ -1,20 +1,28 @@
 import numpy as np
 import random
 
-nb_features = 5;
-nb_examples = 10;
+nb_features = 5000;
+nb_examples = 10000;
 
 def create_model(nb_features):
     good_model = []
     bad_model = []
     for i in range(nb_features):
-        mean = random.uniform(1, 25)
-        variance = random.uniform(1,5)
-        bmean = -1.0*random.uniform(1, 25)
-        bvariance = random.uniform(1,5)
+        mean = random.uniform(0, 100)
+        variance = random.uniform(1,1.5)
+        bmean = mean + random.uniform(-0.01,0.01)
+        bvariance = variance
         good_model += [(mean, variance) ]
         bad_model += [(bmean, bvariance)]
     return good_model, bad_model
+
+def print_models(good_model, bad_model, filename = "models"):
+    f = open(filename, 'w')
+    st = str(good_model)
+    st += "\n"
+    st += str(bad_model)
+    f.write(st)
+    f.close()
 
 def generate_example(model):
     ex = []
@@ -34,8 +42,14 @@ def print_array(array):
             print(str(i), end=' ')
         k +=1
 
+# def read_models(filename = None):
+#     if filename is None:
+#         g, b = create_model(nb_features)
+#     else:
+
 good_model,bad_model = create_model(nb_features)
 
+print_models(good_model, bad_model)
 
 for i in range(nb_examples):
     s = []

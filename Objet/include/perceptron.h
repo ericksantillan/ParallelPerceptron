@@ -4,7 +4,7 @@
 
 #include "data.h"
 
-#define MAX_ITER 5000
+#define MAX_ITER 500000
 
 class Perceptron{
 public:
@@ -12,6 +12,7 @@ public:
   double* w;
   double learning_rate = 0.1;
   Perceptron(Data data);
+  Perceptron();
   void train();
   double f( double* x);
   void printW();

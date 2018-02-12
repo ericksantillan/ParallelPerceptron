@@ -42,8 +42,10 @@ void ParallelPerceptron::setW(double* wp){
 
 }
 
-void ParallelPerceptron::OneEpochPerceptron_inside(Data training_set, double* wp, int max_iterations){
+void ParallelPerceptron::OneEpochPerceptron_inside(Data& training_set, double* wp, int max_iterations){
+  training_set.printX();
   setW(wp);
+  cout << "[DEBUG]" << training_set.nb_examples << endl;
   srand (time(NULL));
   int sample;
   for (size_t t = 0; t < max_iterations; t++) {
@@ -81,7 +83,7 @@ void ParallelPerceptron::printW(){
   }
 }
 
-void ParallelPerceptron::testing(Data test_set){
+void ParallelPerceptron::testing(Data& test_set){
   int total_positif = 0;
   int total_negatif = 0;
   int true_positif = 0;

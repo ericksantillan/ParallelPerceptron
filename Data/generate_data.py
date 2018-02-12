@@ -1,8 +1,8 @@
 import numpy as np
 import random
 
-nb_features = 5000;
-nb_examples = 10000;
+nb_features = 50;
+nb_examples = 100;
 
 def create_model(nb_features):
     good_model = []

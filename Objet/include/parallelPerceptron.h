@@ -14,9 +14,9 @@ public:
   void setW(double* wp);
   double f( double* x);
   void printW();
-  void testing(Data test_set);
+  void testing(Data& test_set);
   double fw(double* x, double* wp);
-  void OneEpochPerceptron_inside(Data training_set, double* wp, int max_iterations = MAX_ITER);
+  void OneEpochPerceptron_inside(Data& training_set, double* wp, int max_iterations = MAX_ITER);
 };
 
 #endif

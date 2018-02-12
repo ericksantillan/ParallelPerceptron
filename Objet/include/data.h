@@ -4,6 +4,7 @@
 
 #include <string>
 #include <iostream>
+#include <vector>
 using namespace std;
 
 class Data{
@@ -14,6 +15,7 @@ public:
   int nb_examples = -1; //number of examples
   int nb_features = -1; //number of features
   bool intercept;
+  // Data(bool inter = true);
   Data(const string& file, bool inter = true);
   Data(const Data& data);
   void print();
@@ -21,7 +23,10 @@ public:
   void printY();
   void openFile();
   void populate();
-  Data* split(int nb_partitions);
+  vector<Data> split(int nb_partitions);
+  void setFilename(string file);
+private:
+  void allocateMemory();
 };
 
 #endif

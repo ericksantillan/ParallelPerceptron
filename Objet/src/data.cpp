@@ -30,7 +30,7 @@ void Data::print(){
 
 void Data::openFile(){
   int i = 0;
-  size_t k = 0;
+  int k = 0;
   bool first = true;
   //Opening file
   ifstream infile(filename);
@@ -92,8 +92,8 @@ void Data::populate(){
 
 void Data::printX(){
   assert(nb_examples > 0 and nb_features > 0);
-  for (size_t i = 0; i < nb_examples; i++) {
-    for (size_t j = 0; j < nb_features; j++) {
+  for (int i = 0; i < nb_examples; i++) {
+    for (int j = 0; j < nb_features; j++) {
           cout<< "X["<<i<<"]["<<j<<"]: "<<X[i][j] << "\t";
     }
     cout<<endl;
@@ -102,7 +102,7 @@ void Data::printX(){
 
 void Data::printY(){
   assert(nb_examples > 0 and nb_features > 0);
-  for (size_t i = 0; i < nb_examples; i++) {
+  for (int i = 0; i < nb_examples; i++) {
     cout<< "Y["<<i<<"]: "<<y[i] << "\t";
   }
   cout<<endl;
@@ -116,7 +116,7 @@ vector<Data> Data::split(int nb_partitions){
 
   vector<Data> partitions(nb_partitions, Data(filename));
 
-  for (size_t j = 0; j < nb_partitions; j++) {
+  for (int j = 0; j < nb_partitions; j++) {
     partitions[j].nb_examples = examples_per_partition;
     partitions[j].nb_features = nb_features;
     partitions[j].allocateMemory();
@@ -137,7 +137,7 @@ vector<Data> Data::split(int nb_partitions){
     stringstream st(line);
     if ( (k % (examples_per_partition )) == 0 ) {
       partition ++;
-      cout<< "Partition: " << partition;
+      // cout<< "Partition: " << partition;
       i=0;
         }
 
@@ -168,7 +168,7 @@ void Data::allocateMemory(){
   assert(nb_examples > 0 and nb_features > 0);
   //Allocation of memory
   X = new double* [nb_examples];
-  for (size_t i = 0; i < nb_examples; i++) {
+  for (int i = 0; i < nb_examples; i++) {
     X[i] = new double[nb_features];
   }
   y = new double[nb_examples];

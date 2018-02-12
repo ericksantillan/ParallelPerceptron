@@ -1,8 +1,8 @@
 import numpy as np
 import random
 
-nb_features = 50;
-nb_examples = 100;
+nb_features = 5000;
+nb_examples = 10000;
 
 def create_model(nb_features):
     good_model = []
@@ -10,7 +10,7 @@ def create_model(nb_features):
     for i in range(nb_features):
         mean = random.uniform(0, 100)
         variance = random.uniform(1,1.5)
-        bmean = mean + random.uniform(-0.01,0.01)
+        bmean = mean + random.uniform(-0.1,0.2)
         bvariance = variance
         good_model += [(mean, variance) ]
         bad_model += [(bmean, bvariance)]

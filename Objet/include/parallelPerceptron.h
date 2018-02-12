@@ -11,6 +11,7 @@ public:
   double* w;
   double learning_rate = 0.1;
   ParallelPerceptron(int features);
+  ParallelPerceptron(const ParallelPerceptron& P);
   void setW(double* wp);
   double f( double* x);
   void printW();

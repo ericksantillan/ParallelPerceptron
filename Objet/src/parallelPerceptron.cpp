@@ -15,7 +15,7 @@ ParallelPerceptron::ParallelPerceptron(int features){
 /*
 * Constructeur par copie
 */
-ParallelPerceptron(const ParallelPerceptron& P){
+ParallelPerceptron::ParallelPerceptron(const ParallelPerceptron& P){
   nb_features = P.nb_features;
   w = new double[nb_features];
   for (int i = 0; i < nb_features; i++) {
@@ -73,6 +73,7 @@ void ParallelPerceptron::OneEpochPerceptron_inside(Data& training_set, double* w
     }
   }
   cout << "Training done in " << updates << " updates." << endl;
+  nb_updates = updates;
 }
 
 

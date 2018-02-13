@@ -7,10 +7,10 @@
 using namespace std;
 
 #define NB_PARTITIONS 5
-#define NB_THREADS 4
+#define NB_THREADS 1
 
 
-int main(int argc, char const *argv[])
+int main3(int argc, char const *argv[])
 {
   // Data data("../../Erick/Magic/Magic-Train1");
   // Data test_set("../../Erick/Magic/Magic-Train2");

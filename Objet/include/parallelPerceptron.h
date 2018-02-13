@@ -11,6 +11,7 @@ public:
   double* w;
   double learning_rate = 0.1;
   ParallelPerceptron(int features);
+  int nb_updates = 0; //Number of updates made on the last training_set
   ParallelPerceptron(const ParallelPerceptron& P);
   void setW(double* wp);
   double f( double* x);

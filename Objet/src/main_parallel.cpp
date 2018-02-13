@@ -10,7 +10,7 @@ using namespace std;
 #define NB_THREADS 1
 
 
-int main3(int argc, char const *argv[])
+int main(int argc, char const *argv[])
 {
   // Data data("../../Erick/Magic/Magic-Train1");
   // Data test_set("../../Erick/Magic/Magic-Train2");
@@ -21,14 +21,14 @@ int main3(int argc, char const *argv[])
 
 
   if (argc < 2) {
-    cout << "Please call the program as ./main_parallel ./Path/to/Data.txt"<< endl;
+    cout << "Please call the program as ./main_parallel ./Path/to/train.txt ./Path/to/test.txt  "<< endl;
     return 0;
   }
 
   cout << "Creating dataFrame.";
   Data data(argv[1]);
   cout << ".";
-  Data test_set(argv[1]);
+  Data test_set(argv[2]);
   cout << ". Done" << endl;
 
   // vector<Data> splitted_data = data.split(NB_PARTITIONS);

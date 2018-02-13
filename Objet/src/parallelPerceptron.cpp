@@ -40,7 +40,9 @@ double ParallelPerceptron::fw(double* x, double* wp){
 
 double ParallelPerceptron::f(double* x){
   double dot_product = 0.0;
-  for (int i = 0; i < nb_features; i++) {
+  int i;
+  #pragma omp parallel for default(shared) private(i) reduction(+:dot_product)
+  for (i = 0; i < nb_features; i++) {
     dot_product += w[i] * x[i];
   }
   if (dot_product <= 0.0) {
@@ -72,7 +74,7 @@ void ParallelPerceptron::OneEpochPerceptron_inside(Data& training_set, double* w
       }
     }
   }
-  cout << "Training done in " << updates << " updates." << endl;
+  // cout << "Training done in " << updates << " updates." << endl;
   nb_updates = updates;
 }
 

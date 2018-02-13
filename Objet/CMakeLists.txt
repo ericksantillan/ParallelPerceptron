@@ -21,9 +21,16 @@ include_directories(include)
 #set(SOURCES src/mainapp.cpp src/Student.cpp)
 
 #However, the file(GLOB...) allows for wildcard additions:
-file(GLOB SOURCES "src/*.cpp")
 
-add_executable(main_parallel ${SOURCES})
+set(COMMON_SOURCES src/data.cpp src/parallelPerceptron.cpp src/perceptron.cpp src/PerceptronIterParamMix.cpp)
+add_executable(main ${COMMON_SOURCES} src/main.cpp)
+add_executable(parallel ${COMMON_SOURCES} src/main_parallel.cpp)
+add_executable(parammix ${COMMON_SOURCES} src/main_parammix.cpp)
 
 
-add_executable(perceptron ${SOURCES})
+# file(GLOB SOURCES "src/*.cpp")
+#
+# add_executable(main_parallel ${SOURCES})
+#
+#
+# add_executable(perceptron ${SOURCES})

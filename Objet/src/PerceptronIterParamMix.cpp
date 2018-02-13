@@ -1,4 +1,5 @@
 #include "PerceptronIterParamMix.h"
+#include <omp.h>
 
 PerceptronIterParamMix::PerceptronIterParamMix(int features, int nb_perceptrons){
   nb_features = features;
@@ -15,11 +16,13 @@ PerceptronIterParamMix::PerceptronIterParamMix(int features, int nb_perceptrons)
 
 void PerceptronIterParamMix::train(Data& training_set){
   int nb_partitions = list_perceptrons.size();
+  size_t i;
   vector<Data> list_data = training_set.split(nb_partitions);
   for (int n = 0; n < N; n++) {
     //Parallelizable
     total_errors = 0;
-    for (size_t i = 0; i < list_perceptrons.size(); i++) {
+    // #pragma omp parallel for default(shared) private(i) //reduction(+:dot_product)
+    for (i = 0; i < list_perceptrons.size(); i++) {
       list_perceptrons[i].OneEpochPerceptron_inside( list_data[i], W );
       total_errors += list_perceptrons[i].nb_updates;
     }

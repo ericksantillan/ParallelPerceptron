@@ -4,7 +4,7 @@
 #include <ctime>
 using namespace std;
 
-int main2()
+int main()
 {
   // Data data("../../Erick/Magic/Magic-Train1");
   // Data test_set("../../Erick/Magic/Magic-Train2");

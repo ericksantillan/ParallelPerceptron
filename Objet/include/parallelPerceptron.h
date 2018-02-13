@@ -9,7 +9,7 @@ class ParallelPerceptron{
 public:
   int nb_features;
   double* w;
-  double learning_rate = 0.1;
+  double learning_rate = 0.01;
   ParallelPerceptron(int features);
   int nb_updates = 0; //Number of updates made on the last training_set
   ParallelPerceptron(const ParallelPerceptron& P);

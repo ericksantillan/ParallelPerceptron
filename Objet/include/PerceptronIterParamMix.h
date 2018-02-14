@@ -12,7 +12,7 @@ public:
   int nb_features;
   vector<ParallelPerceptron> list_perceptrons;
   double* W;
-  int N = 500;
+  int N = 20;
   int total_errors = 0;
   PerceptronIterParamMix(int nb_features, int nb_perceptrons);
 

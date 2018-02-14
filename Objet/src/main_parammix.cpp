@@ -10,7 +10,7 @@
 using namespace std;
 
 #define NB_PARTITIONS 5
-#define NB_THREADS 1
+#define NB_THREADS 2
 
 int main(int argc, char const *argv[]) {
   cout << "********* MAIN PARALLEL ITERATIVE PARAMETRE MIX PERCEPTRON ************" << endl << endl;
@@ -25,7 +25,7 @@ int main(int argc, char const *argv[]) {
   cout << "Creating dataFrame.";
   Data training_set(argv[1]);
   cout << ".";
-  Data test_set(argv[1]);
+  Data test_set(argv[2]);
   cout << ". Done" << endl;
 
 
@@ -37,12 +37,11 @@ int main(int argc, char const *argv[]) {
   PerceptronIterParamMix perceptron(training_set.nb_features, NB_PARTITIONS );
 
   cout << "Starting training" << endl;
-  clock_t begin = clock();
+  double start_time = omp_get_wtime();
   perceptron.train( training_set );
-  clock_t end = clock();
-  double elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
+  double run_time = omp_get_wtime() - start_time;
   cout << "Finished"<< endl;
-  cout << endl << "The training was done in "<< elapsed_secs <<" seconds" << endl;
+  cout << endl << "The training was done in "<< run_time <<" seconds" << endl;
 
   perceptron.test(test_set);
 

@@ -21,15 +21,18 @@ void PerceptronIterParamMix::train(Data& training_set){
   for (int n = 0; n < N; n++) {
     //Parallelizable
     total_errors = 0;
-    // #pragma omp parallel for default(shared) private(i) //reduction(+:dot_product)
+    #pragma omp parallel for default(shared) private(i) //reduction(+:dot_product)
     for (i = 0; i < list_perceptrons.size(); i++) {
       list_perceptrons[i].OneEpochPerceptron_inside( list_data[i], W );
+      #pragma omp critical
       total_errors += list_perceptrons[i].nb_updates;
     }
     //Update W
-    for (int k = 0; k < nb_features; k++) {
-      for (size_t i = 0; i < list_perceptrons.size(); i++) {
-        W[k] +=( double(list_perceptrons[i].nb_updates) / total_errors ) * list_perceptrons[i].w[k];
+    if (total_errors != 0){
+      for (int k = 0; k < nb_features; k++) {
+        for (size_t i = 0; i < list_perceptrons.size(); i++) {
+          W[k] +=( double(list_perceptrons[i].nb_updates) / total_errors ) * list_perceptrons[i].w[k];
+        }
       }
     }
   }
